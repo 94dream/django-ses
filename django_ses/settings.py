@@ -1,7 +1,7 @@
 from django.conf import settings
 from boto.ses import SESConnection
 
-__all__ = ('ACCESS_KEY', 'SECRET_KEY', 'AWS_SES_REGION_NAME',
+__all__ = ('ACCESS_KEY', 'SECRET_KEY', 'BOTO_PROFILE_NAME', 'AWS_SES_REGION_NAME',
         'AWS_SES_REGION_ENDPOINT', 'AWS_SES_AUTO_THROTTLE',
         'AWS_SES_RETURN_PATH', 'DKIM_DOMAIN', 'DKIM_PRIVATE_KEY',
         'DKIM_SELECTOR', 'DKIM_HEADERS', 'TIME_ZONE')
@@ -11,6 +11,9 @@ ACCESS_KEY = getattr(settings, 'AWS_SES_ACCESS_KEY_ID',
 
 SECRET_KEY = getattr(settings, 'AWS_SES_SECRET_ACCESS_KEY',
     getattr(settings, 'AWS_SECRET_ACCESS_KEY', None))
+
+BOTO_PROFILE_NAME = getattr(settings, 'BOTO_PROFILE_NAME',
+    getattr(settings, 'BOTO_PROFILE_NAME', None))
 
 AWS_SES_REGION_NAME = getattr(settings, 'AWS_SES_REGION_NAME',
     SESConnection.DefaultRegionName),

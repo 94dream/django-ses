@@ -34,6 +34,7 @@ class Command(BaseCommand):
 
         access_key_id = settings.ACCESS_KEY
         access_key = settings.SECRET_KEY
+        boto_profile_name = settings.BOTO_PROFILE_NAME
         region = RegionInfo(
             name=settings.AWS_SES_REGION_NAME,
             endpoint=settings.AWS_SES_REGION_ENDPOINT)
@@ -41,7 +42,8 @@ class Command(BaseCommand):
         connection = SESConnection(
                 aws_access_key_id=access_key_id,
                 aws_secret_access_key=access_key,
-                region=region)
+                region=region,
+                boto_profile_name=boto_profile_name)
 
         if add_email:
             if verbosity != '0':

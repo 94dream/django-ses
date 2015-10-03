@@ -129,7 +129,8 @@ def dashboard(request):
     ses_conn = SESConnection(
         aws_access_key_id=settings.ACCESS_KEY,
         aws_secret_access_key=settings.SECRET_KEY,
-        region=region)
+        region=region,
+        boto_profile_name=settings.BOTO_PROFILE_NAME)
 
     quota_dict = ses_conn.get_send_quota()
     verified_emails_dict = ses_conn.list_verified_email_addresses()

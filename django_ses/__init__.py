@@ -46,6 +46,7 @@ class SESBackend(BaseEmailBackend):
 
     def __init__(self, fail_silently=False, aws_access_key=None,
                  aws_secret_key=None, aws_region_name=None,
+                 boto_profile_name=None, 
                  aws_region_endpoint=None, aws_auto_throttle=None,
                  dkim_domain=None, dkim_key=None, dkim_selector=None,
                  dkim_headers=None, **kwargs):
@@ -53,6 +54,7 @@ class SESBackend(BaseEmailBackend):
         super(SESBackend, self).__init__(fail_silently=fail_silently, **kwargs)
         self._access_key_id = aws_access_key or settings.ACCESS_KEY
         self._access_key = aws_secret_key or settings.SECRET_KEY
+        self._boto_profile_name = boto_profile_name or settings.BOTO_PROFILE_NAME
         self._region = RegionInfo(
             name=aws_region_name or settings.AWS_SES_REGION_NAME,
             endpoint=aws_region_endpoint or settings.AWS_SES_REGION_ENDPOINT)
@@ -77,6 +79,7 @@ class SESBackend(BaseEmailBackend):
                 aws_access_key_id=self._access_key_id,
                 aws_secret_access_key=self._access_key,
                 region=self._region,
+                boto_profile_name=self._boto_profile_name,
             )
         except:
             if not self.fail_silently:

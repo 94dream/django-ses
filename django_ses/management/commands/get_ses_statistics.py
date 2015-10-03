@@ -32,6 +32,7 @@ class Command(BaseCommand):
         connection = SESConnection(
             aws_access_key_id=settings.ACCESS_KEY,
             aws_secret_access_key=settings.SECRET_KEY,
+            boto_profile_name=settings.BOTO_PROFILE_NAME,
         )
         stats = connection.get_send_statistics()
         data_points = stats_to_list(stats, localize=False)
