@@ -79,7 +79,7 @@ class SESBackend(BaseEmailBackend):
                 aws_access_key_id=self._access_key_id,
                 aws_secret_access_key=self._access_key,
                 region=self._region,
-                boto_profile_name=self._boto_profile_name,
+                profile_name=self._boto_profile_name,
             )
         except:
             if not self.fail_silently:
