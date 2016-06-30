@@ -123,7 +123,7 @@ CLASSIFIERS = [
 
 setup(
     name='django-ses',
-    version='0.7.0',  # When changing this, remember to change it in __init__.py
+    version='0.7.1',  # When changing this, remember to change it in __init__.py
     packages=find_packages(exclude=['example']),
     package_data=package_data,
     author='Harry Marr',
@@ -134,6 +134,6 @@ setup(
     long_description=LONG_DESCRIPTION,
     platforms=['any'],
     classifiers=CLASSIFIERS,
-    install_requires=['boto>=2.1.0'],
+    install_requires=['boto>=2.31.0'],
     include_package_data=True,
 )
